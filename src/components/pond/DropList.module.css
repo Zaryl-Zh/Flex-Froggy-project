@@ -1,9 +1,6 @@
-element.style {
-    display: none;
-    display: block;
-}
+
 #levelsWrapper {
-    /* display: none; */
+    display: none;
     top: 30px;
     right: 31px;
     max-width: 160px;
@@ -36,7 +33,6 @@ element.style {
     border-color: rgba(255, 255, 255, 0.5);
 }
 .level-marker {
-    /* float: left; */
     display: inline-block;
     width: 30px;
     height: 30px;
