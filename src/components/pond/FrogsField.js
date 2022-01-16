@@ -10,8 +10,8 @@ const FrogsField = () => {
     const currentLevel = useSelector(state => state.level.currentLevel)
     const levelData = useSelector(state=> state.level.levels.find(item =>item.level===currentLevel))
     const userStyle = useSelector(state => state.level.userAnswer)
-    const [style, setStyle] = useState()
     const frogRef = useRef()
+    
     useEffect(() => { 
         frogRef.current.style = userStyle
         if(levelData.correctAnswer.trim() === userStyle.trim()) {

@@ -10,7 +10,7 @@ const LevelCounter = () => {
     const [state, setState] = useState(false)
 
     const dispatch = useDispatch()
-    const level = useSelector(state => state.level.currentLevel)
+    const currentLevel = useSelector(state => state.level.currentLevel)
     const levels = useSelector(state=> state.level.levels)
 
     const nextLevel = () => {
@@ -25,11 +25,13 @@ const LevelCounter = () => {
        setState(state => !state)
         
     }
+
+   
     const droplist = () => {
         return (
            <div id={classes.levelsWrapper} className={classes.tooltip}>
              <div id={classes.levels}>
-              {levels.map(level =>{ return(<DropList key={level.level} level={level.level}/>)})}
+              {levels.map(level =>{ return(<DropList key={level.level} level={level.level} />)})}
           </div>
            <div id={classes.labelReset}>Reset</div>
           </div>
@@ -39,7 +41,7 @@ const LevelCounter = () => {
     return (
         
         <div id={classes['level-counter']}>
-            {level <= 1 ? 
+            {currentLevel <= 1 ? 
             <span className={`${classes.arrow} ${classes.left} ${classes.disabled}`}> 
                 <span className={classes.triangle}></span>
             </span> :
@@ -49,12 +51,12 @@ const LevelCounter = () => {
             }
             <span id={classes['level-indicator']} className={classes.arrow} onClick={dropListHandler}>
                 <span id={classes.labelLevel}>Level</span> {' '}
-                <span>{level }</span> {' '}
+                <span>{currentLevel }</span> {' '}
                 <span>of</span> {' '}
                 <span>10</span> {' '}
                 <span className={classes.caret}>▾</span>
             </span>
-          {level >= 10 ?
+          {currentLevel >= 10 ?
             <span className={`${classes.arrow} ${classes.right} ${classes.disabled}`}>
                 <span className={classes.triangle}></span>
             </span> :

@@ -8,11 +8,9 @@ import { levelActions } from '../../redux-store/level-slice'
 const InputArea = () => {
     
     const dispatch = useDispatch()
-
     const currentLevel = useSelector(state => state.level.currentLevel)
     const allLevels = useSelector(state=> state.level.levels)
-    const levelData = allLevels.filter(item => item.level === currentLevel)
-
+    const levelData = allLevels.filter(item => item.level === currentLevel)[0]
     const [answer, setAnswer] = useState('')
     const inputHandler = (e) => {
         setAnswer(e.target.value)
@@ -21,14 +19,16 @@ const InputArea = () => {
     }
 
     const nextLevel = () => {
-       dispatch(levelActions.setCurrentLevel(currentLevel + 1))
-       
+        if((currentLevel + 1) <=10)
+        {dispatch(levelActions.setCurrentLevel(currentLevel + 1)) }
     }
+  
+    const buttonDisabled = (levelData.correctAnswer=== answer) ? `${classes.enabled}` : classes.disabled
 
-    //  useEffect(() => {
-    //     if(currentLevel)
-    //     {setAnswer('')}
-    // }, [currentLevel])
+     useEffect(() => {
+        dispatch(levelActions.setStyles(''))
+        setAnswer('')
+    }, [levelData.level])
     
     const textareaHeight = {height: `${24 * levelData.lines}px`}
 
@@ -53,10 +53,11 @@ const InputArea = () => {
                    style={textareaHeight}
                    autoFocus autoCapitalize = 'none'
                    onChange={inputHandler}
+                   value={answer}
                    ></textarea>
                 <pre id='after'>{ '}'}</pre>
             </div>
-            <button id={classes.next} className='translate disabled' onClick={nextLevel}>Next</button>
+            <button className={`${classes.next} ${buttonDisabled}`} onClick={nextLevel}>Next</button>
         </div>
     )
 }
