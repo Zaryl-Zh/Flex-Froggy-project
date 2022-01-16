@@ -1,0 +1,16 @@
+.sidebar {
+    width: 50%;
+    min-width: 300px;
+    position: relative;
+    padding: 2em;
+    background-color: #43A047;
+    font-size: 15px;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -0.5rem;
+    justify-content: space-between;
+}
+
