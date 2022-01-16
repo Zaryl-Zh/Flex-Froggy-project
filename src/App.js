@@ -1,3 +1,4 @@
+
 import './App.css';
 import Sidebar from './components/sidebar/Sidebar';
 import FrogsField from './components/pond/FrogsField';
@@ -13,6 +14,7 @@ function App() {
     boxSizing: 'border-box'
   }
   return (
+
     <div style={style}>
      <Sidebar/>
      <FrogsField/>
