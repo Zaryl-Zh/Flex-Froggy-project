@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { levelActions } from '../../redux-store/level-slice'
 
+
 const FrogsField = () => {
     
     const dispatch = useDispatch()
@@ -34,7 +35,7 @@ const FrogsField = () => {
 
     return (
         <>
-            <div id={classes.board}>
+            <div id={classes.board}> 
             <div id={classes.pond} ref={frogRef}>
                 {frogColor()}
             </div>
